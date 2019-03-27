@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import moment from 'moment';
 
@@ -65,14 +66,16 @@ class PunchCard extends Component {
   render() {
     return (
       <div class="card text-white bg-dark mb-3" style={{maxWidth: '18rem'}}> 
-        <h5 class="card-title">SunnyVille Child Care ☀️</h5>
-        <form>
-          <input id="userid" type="password" value={this.state.usercode} onChange={this.updateEntry}></input>
-          <br/>
-          <Button type="submit" variant="success" size="lg" onClick={this.handleSubmit}>IN</Button>
-          <Button type="submit" variant="danger" size="lg">OUT</Button>
-        </form>
-        <Button variant="info" size="sm" >Admin</Button>
+        <Card.Body>
+          <h5 class="card-title">SunnyVille Child Care ☀️</h5>
+          <form>
+            <input id="userid" type="password" value={this.state.usercode} onChange={this.updateEntry}></input>
+            <br/>
+            <Button type="submit" variant="success" size="lg" onClick={this.handleSubmit}>IN</Button>
+            <Button type="submit" variant="danger" size="lg">OUT</Button>
+          </form>
+          <Button variant="info" size="sm" >Admin</Button>
+        </Card.Body>
       </div>
     )
   }
