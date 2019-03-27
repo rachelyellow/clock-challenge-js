@@ -32,12 +32,14 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter className="App">
-        <Switch>
-          <Route path="/" render={(props) => <PunchCard {...props} sessions={this.state.sessions} teachers={this.state.teachers} />} exact />
-          <Route path="/admin" render={(props) => <SessionsTable {...props} sessions={this.state.sessions} teachers={this.state.teachers} />} exact />
-        </Switch>
-      </BrowserRouter>
+      <div className="App">
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" render={(props) => <PunchCard {...props} sessions={this.state.sessions} teachers={this.state.teachers} />} exact />
+            <Route path="/admin" render={(props) => <SessionsTable {...props} sessions={this.state.sessions} teachers={this.state.teachers} />} exact />
+          </Switch>
+        </BrowserRouter>
+      </div>
     )
   }
 }

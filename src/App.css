@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background: url('./images/wallpaper.jpg');
+  background-size: cover;
 }
 
 .App-logo {
@@ -33,7 +35,8 @@
 .table {
   margin: auto;
   max-width: 85%;
-  margin-top: 4em;
+  min-height: 40%;
+  margin-top: 5em;
 }
 
 .pagetitle {
