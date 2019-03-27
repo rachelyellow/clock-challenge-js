@@ -29,7 +29,7 @@ router.patch('/sessions/:id', function(req, res) {
 })
 
 router.get('/admin', function(req, res) {
-  db.select().from('sessions').then(function(data) {
+  db('sessions').then(function(data) {
     res.send(data)
   // order by id (created time)
   })

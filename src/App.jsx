@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import PunchCard from "./PunchCard.jsx";
 import SessionsTable from "./SessionsTable.jsx";
+import { BrowserRouter, Route } from 'react-router-dom'
 import axios from 'axios';
 
 
@@ -31,10 +32,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <BrowserRouter className="App">
         <PunchCard sessions={this.state.sessions} teachers={this.state.teachers} />
         <SessionsTable sessions={this.state.sessions} teachers={this.state.teachers} />
-      </div>
+      </BrowserRouter>
     );
   }
 }
