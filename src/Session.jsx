@@ -10,11 +10,11 @@ class Session extends Component {
   render() {
     return (
       <tr>
-        <td>1</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
+        <td>{this.props.session.id}</td>
+        <td>{this.props.session.teacher_id}</td>
+        <td>{this.props.session.date}</td>
+        <td>{this.props.session.time_in}</td>
+        <td>{this.props.session.time_out}</td>
       </tr>
     )
   }

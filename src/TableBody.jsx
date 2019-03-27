@@ -11,7 +11,7 @@ class TableBody extends Component {
   render() {
     return (
       <tbody>
-        {this.props.sessions.map((session, index) => {
+        {this.props.sessions.map((session, index) => 
           <Session session={session} key={index} />
         )}
       </tbody>
