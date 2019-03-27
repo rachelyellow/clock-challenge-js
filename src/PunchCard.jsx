@@ -8,7 +8,8 @@ class PunchCard extends Component {
     super(props)
     this.state = {
       loading: true,
-      teachers: []
+      teachers: [],
+      usercode: ""
     }
   }
 
@@ -20,6 +21,25 @@ class PunchCard extends Component {
     .catch(function(error) {
       console.log(error)
     })
+  }
+
+  validateCode = () => {
+    this.state.teachers.forEach(function(teacher) {
+      if (teacher.user_code === this.state.usercode) {
+        return true
+      }
+      return false
+    })
+  }
+
+  signin = () => {
+    axios.post('/sessions', {
+      
+    })
+  }
+
+  signout = () => {
+    axios.patch
   }
 
   render() {
