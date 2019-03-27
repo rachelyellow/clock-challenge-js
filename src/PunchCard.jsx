@@ -15,7 +15,7 @@ class PunchCard extends Component {
   }
 
   componentDidMount() {
-    console.log('punchcard component mounted', this.props)
+    console.log('punchcard component mounted')
   }
 
   updateEntry = event => {
@@ -87,7 +87,7 @@ class PunchCard extends Component {
 
   render() {
     return (
-      <div className="card text-white bg-dark mb-3" style={{maxWidth: '30rem'}}> 
+      <div className="card text-white bg-dark mb-3" > 
         <Card.Body>
           <h5 className="card-title">SunnyVille Child Care ☀️</h5>
           <form>
