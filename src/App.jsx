@@ -32,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <PunchCard teachers={this.state.teachers} />
+        <PunchCard sessions={this.state.sessions} teachers={this.state.teachers} />
         <SessionsTable sessions={this.state.sessions} teachers={this.state.teachers} />
       </div>
     );

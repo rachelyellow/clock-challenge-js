@@ -22,21 +22,45 @@ class PunchCard extends Component {
     this.setState({ usercode: event.target.value })
   }
     
-  handleSubmit = event => {
+  handleSignIn = event => {
     event.preventDefault()
     const pin = parseInt(this.state.usercode)
     const teachers = this.props.teachers
+    const thingy = this
     // validates the pin
     this.props.teachers.forEach(function(teacher) {
       if (teacher.user_code === pin) {
-          axios.post('/api/clock_challenge/sessions', {
-            date: moment().format('L'),
-            time_in: moment().format('LT'),
-            teacher_id: teachers.find(t => t.user_code === pin).id
-          })
+        axios.post('/api/clock_challenge/sessions', {
+          date: moment().format('L'),
+          time_in: moment().format('LT'),
+          teacher_id: teachers.find(t => t.user_code === pin).id
+        })
+        .then(function(res) {
+          thingy.setState({ usercode: '' })
+          const teacherId = res.data[0].teacher_id
+          console.log('logged in as', teachers.find(t => t.id === teacherId).first_name)
+          // force refresh page
+        })
       }
     })
-    // return self.state.valid
+    // return "invalid id"
+  }
+
+  handleSignOut = event => {
+    event.preventDefault()
+    const pin = parseInt(this.state.usercode)
+    const teacher = this.props.teachers.find(t => t.user_code === pin)
+    const sessions = this.props.sessions
+    const sessionId = sessions.find(s => s.teacher_id === teacher.id && !s.time_out).id
+    const thingy = this
+    axios.patch(`/api/clock_challenge/sessions/${sessionId}`, {
+      time_out: moment().format('LT'),
+      sessionId: sessionId
+    })
+    .then(function(res) {
+      thingy.setState({ usercode: '' })
+      console.log('enjoy your evening,', teacher.first_name)
+    })
   }
 
   // validate  = () => {
@@ -61,10 +85,6 @@ class PunchCard extends Component {
   //     // this.setState({ usercode: '' })
   //   }
 
-  // signout = () => {
-  //   axios.patch
-  // }
-
   render() {
     return (
       <div className="card text-white bg-dark mb-3" style={{maxWidth: '18rem'}}> 
@@ -73,8 +93,8 @@ class PunchCard extends Component {
           <form>
             <input id="userid" type="password" value={this.state.usercode} onChange={this.updateEntry}></input>
             <br/>
-            <Button type="submit" variant="success" size="lg" onClick={this.handleSubmit}>IN</Button>
-            <Button type="submit" variant="danger" size="lg">OUT</Button>
+            <Button type="submit" variant="success" size="lg" onClick={this.handleSignIn}>IN</Button>
+            <Button type="submit" variant="danger" size="lg" onClick={this.handleSignOut}>OUT</Button>
           </form>
           <Button variant="info" size="sm">Admin</Button>
         </Card.Body>

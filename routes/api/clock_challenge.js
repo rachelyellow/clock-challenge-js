@@ -12,20 +12,20 @@ router.get('/', function(req, res) {
 
 router.post('/sessions', function(req, res) {
   console.log(req.body)
-  db('sessions').insert(req.body).then(function(data) {
+  db('sessions').insert(req.body).returning('*').then(function(data) {
     res.send(data)
     console.log('sent')
   })
 })
 
 router.patch('/sessions/:id', function(req, res) {
-  const timeOut = new Date
-  // db.select().from('sessions')
-  // .where({ teacher_id: "form info", time_out: null })
-  // .update({ time_out: timeOut })
-  // .then(function(data) {
-  //   res.send(data)
-  // })
+  db('sessions')
+  .where({ id: req.body.sessionId })
+  .update({ time_out: req.body.time_out })
+  .then(function(data) {
+    // res.send(data)
+    console.log('updated!')
+  })
 })
 
 router.get('/admin', function(req, res) {
