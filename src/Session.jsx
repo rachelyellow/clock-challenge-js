@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
 import axios from 'axios'
 
@@ -17,7 +17,7 @@ class Session extends Component {
         {this.props.teachers.find(t => t.id === this.props.session.teacher_id).last_name}</td>
         <td>{this.props.session.time_in}</td>
         <td>{this.props.session.time_out}</td>
-        <td><Button type="submit" variant="info" size="sm">Edit</Button></td>
+        <td><Button href={this.props.editLink} variant="info" size="sm">Edit</Button></td>
       </tr>
     )
   }
