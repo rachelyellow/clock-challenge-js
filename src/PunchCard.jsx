@@ -15,7 +15,7 @@ class PunchCard extends Component {
   }
 
   componentDidMount() {
-    console.log('punchcard component mounted')
+    console.log('punchcard component mounted', this.props)
   }
 
   updateEntry = event => {
