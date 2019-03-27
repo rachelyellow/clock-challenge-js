@@ -28,4 +28,23 @@ router.patch('/sessions/:id', function(req, res) {
   // })
 })
 
+router.get('/admin', function(req, res) {
+  // db.select().from('sessions').then(function(data) {
+  //   res.RENDERREACT(data)
+  // })
+  // console.log('all')
+})
+
+router.get('/admin/sessions/:id/edit', function(req, res) {
+  // render form to change times or delete session
+})
+
+router.patch('/admin/sessions/:id', function(req, res) {
+  // edit form submits to this route
+})
+
+router.delete('/admin/sessions/:id', function(req, res) {
+  // route to delete a session completely
+})
+
 module.exports = router
