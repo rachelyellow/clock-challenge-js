@@ -12,10 +12,10 @@ router.get('/', function(req, res) {
 
 router.post('/sessions', function(req, res) {
   console.log(req.body)
-  // db.insert().returning('*').into('').then(function(data) {
-  //   res.send(data)
-  // })
-  res.send(req.body)
+  db('sessions').insert(req.body).then(function(data) {
+    res.send(data)
+    console.log('sent')
+  })
 })
 
 router.patch('/sessions/:id', function(req, res) {

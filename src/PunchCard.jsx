@@ -19,18 +19,20 @@ class PunchCard extends Component {
   }
 
   updateEntry = event => {
-      this.setState({ usercode: event.target.value })
-    }
+    this.setState({ usercode: event.target.value })
+  }
     
   handleSubmit = event => {
     event.preventDefault()
     const pin = parseInt(this.state.usercode)
+    const teachers = this.props.teachers
     // validates the pin
     this.props.teachers.forEach(function(teacher) {
       if (teacher.user_code === pin) {
           axios.post('/api/clock_challenge/sessions', {
             date: moment().format('L'),
-            time_in: moment().format('LT')
+            time_in: moment().format('LT'),
+            teacher_id: teachers.find(t => t.user_code === pin).id
           })
       }
     })
@@ -65,16 +67,16 @@ class PunchCard extends Component {
 
   render() {
     return (
-      <div class="card text-white bg-dark mb-3" style={{maxWidth: '18rem'}}> 
+      <div className="card text-white bg-dark mb-3" style={{maxWidth: '18rem'}}> 
         <Card.Body>
-          <h5 class="card-title">SunnyVille Child Care ☀️</h5>
+          <h5 className="card-title">SunnyVille Child Care ☀️</h5>
           <form>
             <input id="userid" type="password" value={this.state.usercode} onChange={this.updateEntry}></input>
             <br/>
             <Button type="submit" variant="success" size="lg" onClick={this.handleSubmit}>IN</Button>
             <Button type="submit" variant="danger" size="lg">OUT</Button>
           </form>
-          <Button variant="info" size="sm" >Admin</Button>
+          <Button variant="info" size="sm">Admin</Button>
         </Card.Body>
       </div>
     )
