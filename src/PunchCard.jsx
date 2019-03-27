@@ -8,7 +8,6 @@ class PunchCard extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: true,
       teachers: [],
       usercode: 0
     }
@@ -17,7 +16,7 @@ class PunchCard extends Component {
   componentDidMount() {
     axios.get('/api/clock_challenge').then((response) => {
       console.log(response.data)
-      this.setState({ loading: false, teachers: response.data })
+      this.setState({ teachers: response.data })
     })
     .catch(function(error) {
       console.log(error)
