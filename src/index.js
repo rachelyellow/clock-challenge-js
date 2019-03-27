@@ -4,6 +4,9 @@ import './index.css';
 import App from './App.jsx';
 import * as serviceWorker from './serviceWorker';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import axios from 'axios'
+
+axios.defaults.baseURL = 'http://localhost:3001'
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

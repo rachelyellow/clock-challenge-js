@@ -2,7 +2,7 @@
 
 const express = require('express')
 const router = express.Router()
-const db = require('../../knexfile') 
+const db = require('../../database/knex') 
 
 router.get('/', function(req, res) {
   db.select().from('teachers').then(function(data) {

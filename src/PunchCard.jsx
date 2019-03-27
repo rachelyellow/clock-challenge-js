@@ -1,7 +1,27 @@
 import React, {Component} from 'react';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 class PunchCard extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: true,
+      teachers: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('/api/clock_challenge').then((response) => {
+      console.log(response.data)
+      this.setState({ loading: false, teachers: response.data })
+    })
+    .catch(function(error) {
+      console.log(error)
+    })
+  }
+
   render() {
     return (
       <div>
