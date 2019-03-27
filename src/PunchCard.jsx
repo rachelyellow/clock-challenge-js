@@ -87,7 +87,7 @@ class PunchCard extends Component {
 
   render() {
     return (
-      <div className="card text-white bg-dark mb-3" style={{maxWidth: '18rem'}}> 
+      <div className="card text-white bg-dark mb-3" style={{maxWidth: '30rem'}}> 
         <Card.Body>
           <h5 className="card-title">SunnyVille Child Care ☀️</h5>
           <form>
@@ -96,7 +96,7 @@ class PunchCard extends Component {
             <Button type="submit" variant="success" size="lg" onClick={this.handleSignIn}>IN</Button>
             <Button type="submit" variant="danger" size="lg" onClick={this.handleSignOut}>OUT</Button>
           </form>
-          <Button variant="info" size="sm">Admin</Button>
+          <Button href="/admin" variant="info" size="sm">Admin</Button>
         </Card.Body>
       </div>
     )
