@@ -12,7 +12,7 @@ class TableBody extends Component {
     return (
       <tbody>
         {this.props.sessions.map((session, index) => 
-          <Session session={session} key={index} />
+          <Session session={session} teachers={this.props.teachers} key={index} />
         )}
       </tbody>
     )

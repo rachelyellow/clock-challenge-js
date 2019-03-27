@@ -33,7 +33,7 @@ class App extends Component {
     return (
       <div className="App">
         <PunchCard teachers={this.state.teachers} />
-        <SessionsTable sessions={this.state.sessions} />
+        <SessionsTable sessions={this.state.sessions} teachers={this.state.teachers} />
       </div>
     );
   }

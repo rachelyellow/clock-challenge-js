@@ -10,17 +10,18 @@ class SessionsTable extends Component {
 
   render() {
     return (
-      <Table responsive>
+      <Table striped bordered hover responsive size="sm">
         <thead>
           <tr>
             <th>Session</th>
-            <th>Teacher</th>
             <th>Date</th>
+            <th>Teacher</th>
             <th>Time In</th>
             <th>Time Out</th>
+            <th></th>
           </tr>
         </thead>
-        <TableBody sessions={this.props.sessions} />
+        <TableBody sessions={this.props.sessions} teachers={this.props.teachers} />
       </Table>
     )
   }
