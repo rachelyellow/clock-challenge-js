@@ -20,7 +20,7 @@ class SessionsTable extends Component {
             <th>Time Out</th>
           </tr>
         </thead>
-        <TableBody />
+        <TableBody sessions={this.props.sessions} />
       </Table>
     )
   }

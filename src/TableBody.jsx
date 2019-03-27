@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import TableRow from "./TableRow.jsx";
+import Session from "./Session.jsx";
 import Table from 'react-bootstrap/Table'
 import axios from 'axios'
 
@@ -11,7 +11,9 @@ class TableBody extends Component {
   render() {
     return (
       <tbody>
-
+        {this.props.sessions.map((session, index) => {
+          <Session session={session} key={index} />
+        )}
       </tbody>
     )
   }
