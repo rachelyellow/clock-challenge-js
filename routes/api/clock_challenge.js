@@ -18,4 +18,9 @@ router.post('/sessions', function(req, res) {
   res.send('hello')
 })
 
+router.patch('/sessions/:id', function(req, res) {
+  const timeOut = new Date
+  // db.select().from('sessions').where({ teacher_id: "form info", time_out: null }).update({ time_out: timeOut })
+})
+
 module.exports = router
