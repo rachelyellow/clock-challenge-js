@@ -31,6 +31,7 @@ router.patch('/sessions/:id', function(req, res) {
 router.get('/admin', function(req, res) {
   // db.select().from('sessions').then(function(data) {
   //   res.RENDERREACT(data)
+  // order by id (created time)
   // })
   // console.log('all')
 })
@@ -45,6 +46,9 @@ router.patch('/admin/sessions/:id', function(req, res) {
 
 router.delete('/admin/sessions/:id', function(req, res) {
   // route to delete a session completely
+  db('sessions').where({ id: req.params.id }).del().then(function() {
+    console.log('deleted!')
+  })
 })
 
 module.exports = router
