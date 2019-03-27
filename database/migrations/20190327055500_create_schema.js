@@ -10,6 +10,7 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('sessions', function(table) {
       table.increments()
       table.integer('teacher_id').references('id').inTable('teachers')
+      table.string('date')
       table.string('time_in')
       table.string('time_out')
     })
