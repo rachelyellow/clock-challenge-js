@@ -15,7 +15,7 @@ router.post('/sessions', function(req, res) {
   // db.insert().returning('*').into('').then(function(data) {
   //   res.send(data)
   // })
-  res.send('hello')
+  res.send(req.body)
 })
 
 router.patch('/sessions/:id', function(req, res) {
@@ -29,10 +29,10 @@ router.patch('/sessions/:id', function(req, res) {
 })
 
 router.get('/admin', function(req, res) {
-  // db.select().from('sessions').then(function(data) {
-  //   res.RENDERREACT(data)
+  db.select().from('sessions').then(function(data) {
+    res.send(data)
   // order by id (created time)
-  // })
+  })
   // console.log('all')
 })
 

@@ -1,53 +1,62 @@
 import React, {Component} from 'react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import moment from 'moment'
+import moment from 'moment';
 
 class PunchCard extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      teachers: [],
-      usercode: 0
+      usercode: '',
+      valid: false
     }
   }
 
   componentDidMount() {
-    axios.get('/api/clock_challenge').then((response) => {
-      console.log(response.data)
-      this.setState({ teachers: response.data })
-    })
-    .catch(function(error) {
-      console.log(error)
-    })
+    console.log('punchcard component mounted')
   }
 
   updateEntry = event => {
       this.setState({ usercode: event.target.value })
-      console.log(event.target.value)
-      // event.target.value = '';
-  }
-
-  validateCode = () => {
-    this.state.teachers.forEach(function(teacher) {
-      if (teacher.user_code === this.state.usercode) {
-        return true
-      }
-      return false
-    })
-  }
-
-  signin = () => {
-    if (true) {
-      console.log(moment())
-      // axios.post('/sessions', {
-        
-      // })
-    } else {
-      console.log('user code does not exist in database.')
     }
+    
+  handleSubmit = event => {
+    event.preventDefault()
+    const pin = parseInt(this.state.usercode)
+    // validates the pin
+    this.props.teachers.forEach(function(teacher) {
+      if (teacher.user_code === pin) {
+          axios.post('/api/clock_challenge/sessions', {
+            date: moment().format('L'),
+            time_in: moment().format('LT')
+          })
+      }
+    })
+    // return self.state.valid
   }
+
+  // validate  = () => {
+  //   const pin = parseInt(this.state.usercode)
+  //   this.props.teachers.forEach(function(teacher) {
+  //     if (teacher.user_code === pin) {
+  //       return true
+  //     }
+  //   })
+  //   return false
+  // }
+    
+  // signin = event => {
+  //   if (this.state.valid) {
+  //     console.log(moment())
+  //     // axios.post('/sessions', {
+        
+  //       // })
+  //     } else {
+  //       console.log('user code does not exist in database.')
+  //     }
+  //     // this.setState({ usercode: '' })
+  //   }
 
   // signout = () => {
   //   axios.patch
@@ -58,10 +67,10 @@ class PunchCard extends Component {
       <div>
         <form>
           <label htmlFor="userid">User ID </label>
-          <input name="userid" onKeyUp={this.updateEntry}></input>
+          <input id="userid" type="password" value={this.state.usercode} onChange={this.updateEntry}></input>
           <br/>
-          <Button variant="success" size="lg">IN</Button>
-          <Button variant="danger" size="lg">OUT</Button>
+          <Button type="submit" variant="success" size="lg" onClick={this.handleSubmit}>IN</Button>
+          <Button type="submit" variant="danger" size="lg">OUT</Button>
         </form>
         <Button variant="info">Admin</Button>
       </div>
