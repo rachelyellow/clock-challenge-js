@@ -1,4 +1,46 @@
+Clock App
+=====================
 
+An application that allows users to clock in and out of their workplace.
+
+### Final Product
+
+<img src="https://github.com/rachelyellow/clock-challenge-js/blob/master/src/images/HiMama%20Clock%20Login.png?raw=true" alt="Punch Card" width="20%" height="20%">
+<img src="https://github.com/rachelyellow/clock-challenge-js/blob/master/src/images/Clock%20Event%20List.png?raw=true" alt="Clock List" width="20%" height="20%">
+<img src="https://github.com/rachelyellow/clock-challenge-js/blob/master/src/images/Edit%20Form.png?raw=true" alt="Edit Form" width="20%" height="20%">
+
+
+### Usage
+
+Clone Clock App.
+
+```
+git clone git@github.com:rachelyellow/clock-challenge-js.git
+
+```
+
+In the project 'root' folder, install the dependencies and run the server on your browser.
+
+```
+npm install
+npm run server
+open http://localhost:3002
+```
+
+
+### Dependencies
+
+* pg
+* knex
+* dotenv
+* express
+* axios
+* cors
+* moment
+* react
+* react-dom
+* react-router-dom
+* react-bootstrap
 
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
