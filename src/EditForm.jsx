@@ -41,21 +41,25 @@ class EditForm extends Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.props)
     return (      
       <form>
         <Table className="table" responsive>
           <thead>
             <tr>
               <th>{'Session '}{this.props.match.params.id}</th>
-              <th>{console.log(this.props.sessions)}</th>
-              <th><Button variant="danger" size="sm">Delete Entry</Button></th>
+              <th>DATE{this.props.sessions.map(function(session) {
+                if (session.id === this.props.match.params.id) {
+                  return session.date
+                }
+              }, this)}</th>
+              <th><Button variant="danger" size="sm" disabled>Delete Entry</Button></th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Teacher</td>
-              <td>{console.log(this.props.teachers)}</td>
+              <td>Teacher Name</td>
               <td>
                 <select id="teacherName" className="editform" type="text" value={this.state.teacherName} onChange={this.updateEntry}>
                   {this.props.teachers.map((teacher, index) => (
@@ -66,18 +70,18 @@ class EditForm extends Component {
             </tr>
             <tr>
               <td>IN</td>
-              <td></td>
+              <td>time_in</td>
               <td><input id="timeIn" className="editform" type="text" value={this.state.time_in} onChange={this.updateEntry}></input></td>
             </tr>
             <tr>
               <td>OUT</td>
-              <td></td>
+              <td>time_out</td>
               <td><input id="timeOut" className="editform" type="text" value={this.state.time_out} onChange={this.updateEntry}></input></td>
             </tr>
             <tr>
               <td>-</td>
               <td><Button href="/admin" variant="info" >Back</Button></td>
-              <td><Button variant="info" >Submit</Button></td>
+              <td><Button variant="info" disabled>Submit</Button></td>
             </tr>
           </tbody>
         </Table>
