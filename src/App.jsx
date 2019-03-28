@@ -38,7 +38,7 @@ class App extends Component {
           <Switch>
             <Route path="/" render={(props) => <PunchCard {...props} sessions={this.state.sessions} teachers={this.state.teachers} />} exact />
             <Route path="/admin" render={(props) => <SessionsTable {...props} sessions={this.state.sessions} teachers={this.state.teachers} />} exact />
-            <Route path="/admin/sessions/" render={(props) => <EditForm {...props} sessions={this.state.sessions} teachers={this.state.teachers} />} />
+            <Route path="/admin/sessions/:id/edit" render={(props) => <EditForm {...props} sessions={this.state.sessions} teachers={this.state.teachers} />} />
           </Switch>
         </BrowserRouter>
       </div>
