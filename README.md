@@ -6,8 +6,8 @@ An application that allows users to clock in and out of their workplace.
 ### Final Product
 
 <img src="https://github.com/rachelyellow/clock-challenge-js/blob/master/src/images/HiMama%20Clock%20Login.png?raw=true" alt="Punch Card" width="60%" height="60%">
-<img src="https://github.com/rachelyellow/clock-challenge-js/blob/master/src/images/Clock%20Event%20List.png?raw=true" alt="Clock List" width="60%" height="60%">
-<img src="https://github.com/rachelyellow/clock-challenge-js/blob/master/src/images/Edit%20Form.png?raw=true" alt="Edit Form" width="60%" height="60%">
+<img src="https://github.com/rachelyellow/clock-challenge-js/blob/master/src/images/Clock%20Event%20List.png?raw=true" alt="Clock List" width="85%" height="85%">
+<img src="https://github.com/rachelyellow/clock-challenge-js/blob/master/src/images/Edit%20Form.png?raw=true" alt="Edit Form" width="85%" height="85%">
 
 
 ### Usage
