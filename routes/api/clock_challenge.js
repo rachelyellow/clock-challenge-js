@@ -23,7 +23,7 @@ router.patch('/sessions/:id', function(req, res) {
   .where({ id: req.body.sessionId })
   .update({ time_out: req.body.time_out })
   .then(function(data) {
-    // res.send(data)
+    res.send(data)
     console.log('updated!')
   })
 })

@@ -11,24 +11,29 @@ class EditForm extends Component {
       teacherName: '',
       timeIn: '',
       timeOut: '',
-      loading: true
+      loading: true,
+      sessions: [],
+      teachers: []
     }
   }
 
-  componentWillMount(){
-    this.setState({ loading: false })
+  componentDidMount(){
+    this.setState({
+      loading: false,
+
+     })
   }
   
   updateEntry = event => {
     let newState = {}
     newState[event.target.id] = event.target.value
-    this.setState(newState, () => console.log(this.state))
+    this.setState(newState)
   }
 
   render() {
     return (      
       <div>
-        { (this.state.loading)
+        { (this.state.sessions.length)
           ? 
           <Loading />
           :
@@ -36,15 +41,15 @@ class EditForm extends Component {
             <Table className="table" responsive>
               <thead>
                 <tr>
-                  <th>{this.props.match.params.id}</th>
-                  <th>Today's Date</th>
+                  <th>{'Session '}{this.props.match.params.id}</th>
+                  <th></th>
                   <th><Button variant="danger" size="sm">Delete Entry</Button></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Teacher</td>
-                  <td></td>
+                  <td>{console.log(this.props.teachers)}</td>
                   <td>
                     <select id="teacherName" className="editform" type="text" value={this.state.teacherName} onChange={this.updateEntry}>
                       {this.props.teachers.map((teacher, index) => (
