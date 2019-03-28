@@ -16,15 +16,15 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    axios.get('/api/clock_challenge').then((response) => {
-      this.setState({ teachers: response.data })
+  componentWillMount() {
+    axios.get('/api/clock_challenge/admin').then((response) => {
+      this.setState({ sessions: response.data })
     })
     .catch(function(error) {
       console.log(error)
     })
-    axios.get('/api/clock_challenge/admin').then((response) => {
-      this.setState({ sessions: response.data })
+    axios.get('/api/clock_challenge').then((response) => {
+      this.setState({ teachers: response.data })
     })
     .catch(function(error) {
       console.log(error)

@@ -7,12 +7,7 @@ class Edit extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      teacherName: '',
-      timeIn: '',
-      timeOut: '',
-      loading: true,
-      sessions: [],
-      teachers: []
+      loading: true
     }
   }
 
@@ -22,23 +17,16 @@ class Edit extends Component {
 
      })
   }
-  
-  updateEntry = event => {
-    let newState = {}
-    newState[event.target.id] = event.target.value
-    this.setState(newState)
-  }
 
   render() {
     return (      
       <div>
-        { (this.state.sessions.length)
+        { (this.state.loading)
           ? 
           <Loading />
           :
           <EditForm sessions={this.props.sessions} teachers={this.props.teachers} match={this.props.match} />
         }
-        
       </div>
     )
   }
